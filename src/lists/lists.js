@@ -1,11 +1,11 @@
-import markup_newcard from './markup_newcard';
+import markupNewCard from './markup_newcard';
 import DraggedElement from './draggedElement';
 import BelowElement from './belowElement';
-import {loadLists, saveLists} from './storage';
+import { loadLists, saveLists } from './storage';
 
 export default class Lists {
   constructor() {
-    this.container = document.getElementById('trello');;
+    this.container = document.getElementById('trello');
     this.listItems = Array.from(this.container.getElementsByClassName('list-items'));
     this.activeAddCardBtn = undefined;
     this.newCardElement = undefined;
@@ -28,11 +28,11 @@ export default class Lists {
     });
   }
 
-  saveLists(e) {
+  saveLists() {
     saveLists(this);
   }
 
-  loadLists(e) {
+  loadLists() {
     loadLists(this);
   }
 
@@ -49,7 +49,7 @@ export default class Lists {
 
     this.newCardElement = document.createElement('form');
     this.newCardElement.classList.add('list-new-card');
-    this.newCardElement.innerHTML = markup_newcard;
+    this.newCardElement.innerHTML = markupNewCard;
 
     e.target.closest('.list').appendChild(this.newCardElement);
     e.target.classList.add('hidden');
@@ -98,13 +98,13 @@ export default class Lists {
     this.draggedElement.move(e);
 
     this.draggedElement.element.hidden = true;
-    let belowElement = document.elementFromPoint(e.clientX, e.clientY);
+    const belowElement = document.elementFromPoint(e.clientX, e.clientY);
     this.draggedElement.element.hidden = false;
 
     this.formatBelowElement(belowElement, e);
   }
 
-  onMouseUp(e) {
+  onMouseUp() {
     if (!this.draggedElement) return;
 
     if (this.belowElement) {

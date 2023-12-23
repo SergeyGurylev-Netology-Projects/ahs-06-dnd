@@ -19,6 +19,8 @@
         "no-restricted-syntax": "off",
         "max-len": "warn",
         "eqeqeq": "off",
+        "class-methods-use-this": "off",
+        "no-console": "warn",
         "lines-between-class-members": [
             "error",
             {

@@ -1,4 +1,4 @@
-const markup_newcard = `
+const markupNewCard = `
     <form class="list-new-card">
     <textarea class="list-new-card--control" name="list-new-card--title"></textarea>
     <div class="list-new-card--btns">
@@ -8,4 +8,4 @@ const markup_newcard = `
   </form>
 `;
 
-export default markup_newcard;
+export default markupNewCard;

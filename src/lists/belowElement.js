@@ -1,4 +1,3 @@
-
 class BelowElement {
   constructor(element) {
     this.element = element;
@@ -13,19 +12,17 @@ class BelowElement {
     const paddingHeight = draggedElement.clientRect.height;
 
     if (this.element.classList.contains('list-title')) {
-      this.element.style.marginBottom = this.clientRect.height + 'px';
+      this.element.style.marginBottom = `${this.clientRect.height}px`;
+    } else if (e.clientY > this.clientRect.top + this.clientRect.height / 2) {
+      this.element.style.marginBottom = `${paddingHeight}px`;
     } else {
-      if (e.clientY > this.clientRect.top + this.clientRect.height / 2) {
-        this.element.style.marginBottom = paddingHeight + 'px';
-      } else {
-        this.element.style.marginTop = paddingHeight + 'px';
-      }
+      this.element.style.marginTop = `${paddingHeight}px`;
     }
   }
 
   clearProperties() {
     this.element.classList.remove('below');
-    this.element.style.removeProperty('margin-top')
+    this.element.style.removeProperty('margin-top');
     this.element.style.removeProperty('margin-bottom');
   }
 }

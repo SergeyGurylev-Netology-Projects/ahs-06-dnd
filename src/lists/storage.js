@@ -1,9 +1,8 @@
-
 export function saveLists(lists) {
   const listsData = [];
 
   lists.listItems.forEach(ul => {
-    let items = [];
+    const items = [];
     Array.from(ul.getElementsByTagName('li')).forEach(li => {
       items.push(li.textContent);
     });
@@ -13,7 +12,6 @@ export function saveLists(lists) {
   localStorage.setItem('listsData', JSON.stringify(listsData));
 }
 
-
 export function loadLists(lists) {
   const json = localStorage.getItem('listsData');
 
@@ -21,21 +19,21 @@ export function loadLists(lists) {
 
   try {
     listsData = JSON.parse(json);
-  } catch(error) {
+  } catch (error) {
     console.log(error);
   }
 
   if (listsData) {
     lists.listItems.forEach((ul, index) => {
-      let listItems = listsData[index];
+      const listItems = listsData[index];
       if (listItems) {
         listItems.forEach(li => {
           const listItem = document.createElement('li');
           listItem.classList.add('list-item');
           listItem.textContent = li;
           ul.appendChild(listItem);
-        })
+        });
       }
-    })
+    });
   }
 }
